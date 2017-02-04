@@ -1,0 +1,16 @@
+alias: Alarm Clock Slider
+trigger:
+  platform: time
+  minutes: '/5'
+  seconds: 00
+condition:
+  - condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.alarm
+        state: 'on'
+      - condition: template
+        value_template: '{{ now.time().strftime("%H") == states.input_slider.slider_houres.state and now.time().strftime("%M") == states.input_slider.slider_minutes.state }}'
+action:
+  service: light.turn_on
+  entity_id: light.yeelightsamufede

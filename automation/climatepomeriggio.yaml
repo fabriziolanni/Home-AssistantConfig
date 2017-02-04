@@ -1,0 +1,20 @@
+alias: pomeriggio
+#  initial_state: True
+#hide_entity: False
+trigger:
+  platform: time
+#  after: '{{ states.input_select.start_pomeriggio.state }}'
+  after: '16:30:00'
+condition:
+  - condition: or
+    conditions:
+      - condition: template
+        value_template: '{{ 16 <= now().hour < 24 }}'
+action:
+  - service: climate.set_temperature
+    data:
+#        entity_id: climate.termostato_caldaia
+      entity_id: climate.termostato_caldaia
+      temperature: '{{ states.input_slider.temp_pomeriggio.state }}'
+#        temperature: '22'
+#        operation_mode: Heat

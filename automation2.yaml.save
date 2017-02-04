@@ -1,0 +1,53 @@
+- alias: Send message at 8:00
+  trigger:
+    - platform: time
+      hours: 01
+      minutes: 14
+      seconds: 10
+  action:
+    service: notify.mypushbullet
+    data:
+      title: "Night Light On"
+      message: "Night light is now on"
+
+- alias: Invia lista spesa
+  trigger:
+    - platform: time
+      minutes: '/1"
+      seconds: 0
+  condition:
+    - platform: state
+      entity_id: input_boolean.acquista
+      state: "on"
+  action:
+    service: notify.mypushbullet
+    data:
+      message: " Lista spesa : {% if is_state('input_boolean.pane', 'on') %} - Pane  {% endif %}{% if is_state('input_boolean.latte', 'on') %} - latte  {% endif %}{% if is_state('input_boolean.coca', 'on') %} - Coca Cola{% endif %}{% if is_state('input_boolean.aranciata', 'on') %} - Aranciata  {% endif %}{% if is_state('input_boolean.cotolette', 'on') %} - Cotolette  {% endif %}{% if is_state('input_boolean.patatine', 'on') %} - Patatine  {% endif %}{% if is_state('input_boolean.nutella', 'on') %} - Nutella  {% endif %}{% if is_state('input_boolean.shampo', 'on') %} - Shampoo  {% endif %}{% if is_state('input_boolean.formaggio', 'on') %} - Formaggio  {% endif %}{% if is_state('input_boolean.caffe', 'on') %} - Caffe  {% endif %}{% if is_state('input_boolean.gelato', 'on') %} - Gelato  {% endif %}{% if is_state('input_boolean.cartaigienica', 'on') %} - Carta Igienica  {% endif %}!"
+# Notifica actualizaciones de HA
+-  alias: Update Available Notifications
+   trigger:
+     - platform: state
+       entity_id: updater.updater
+   action:
+     service: notify.mypushbullet
+     data: 
+       message: "aggiornamento homeassistant disponibile"
+- alias: aurora 06h10
+  trigger:
+    - platform: time
+      after: "21:20:00"
+  condition:
+    - platform: state
+      entity_id: input_boolean.reveil
+      state: "on"
+    - platform: state
+      entity_id: input_boolean.lightreveil
+      state: "on"
+    - platform: state
+      entity_id: input_select.choixreveil
+      state: "06:10"
+  action:
+    service: light.turn_on
+    entity_id: light.chambre
+    data:
+    transition: 120

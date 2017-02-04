@@ -1,0 +1,13 @@
+sequence:
+- execute_service: homeassistant.turn_on
+  service_data:
+    entity_id:
+      - switch.caldaia_automatica
+#- execute_service: notify.pushbullet
+#  service_data: {"message":"Buongiorno sono le 8:00"}
+- execute_service: notify.pushetta
+  service_data: {"message":"caldaia accesa"}
+#- execute_service: switch.turn_on
+#     entity_id: 
+#       - switch.caldaia_manuale
+

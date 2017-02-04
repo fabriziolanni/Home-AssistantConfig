@@ -1,0 +1,306 @@
+- platform: arest
+  resource: http://192.168.123.202
+  name: INTERNA
+  monitored_variables:
+    temperature:
+      name: temperature
+      unit_of_measurement: '°C'
+#      value_template: '{{ value_json.temperature | round(1)  }}'
+#      value_template: '{{ value | round(1) }}'
+    humidity:
+      name: humidity
+      unit_of_measurement: '%' 
+    pirmotion:
+      name: pirmotion
+#      value_template: '{{ value_json.humidity | round(1)  }}'
+#  pins:
+#    D9:
+#      name: Pir
+#      unit_of_measurement: "ca"
+#      value_template: '{{ value_json.light }}'
+#  pins:
+#    3:
+#      name: pir
+#      type: analog
+       
+- platform: cpuspeed
+  name: CPU 
+
+- platform: systemmonitor
+  name: free
+  resources:
+    - type: disk_use_percent
+      arg: /home
+    - type: disk_use
+      arg: /home
+    - type: memory_free
+    - type: processor_use
+    - type: memory_use_percent
+    - type: memory_use
+#    - type: process
+    - type: disk_use_percent
+      arg: /
+    - type: disk_use
+      arg: /
+
+- platform: time_date
+  name: tempo
+  display_options:
+    - 'time'
+    - 'date'
+#    - 'date_time'
+#    - 'time_date'
+#    - 'time_utc'
+#    - 'beat'
+
+- platform: darksky
+  api_key: !secret darksky_key
+  monitored_conditions:
+    - summary
+    - icon
+#    - nearest_storm_distance
+#    - nearest_storm_bearing
+    - precip_type
+    - precip_intensity
+    - precip_probability
+    - temperature
+    - apparent_temperature
+#    - dew_point
+#    - wind_speed
+#      - wind_bearing
+#      - cloud_cover
+    - humidity
+#      - pressure
+#      - visibility
+#      - ozone
+#      - minutely_summary
+#      - hourly_summary
+#      - daily_summary
+    - temperature_max
+    - temperature_min
+#      - apparent_temperature_max
+#      - apparent_temperature_min
+#      - precip_intensity_max
+      
+- platform: speedtest 
+  server_id: 3243
+  monitored_conditions: 
+    - ping 
+    - download 
+    - upload
+
+- platform: command_line
+  command: "curl http://192.168.123.202/analog/3"
+  name: PIR_pt
+  value_template: '{{ value_json.return_value | round(0)  }}'
+
+- platform: mqtt
+  state_topic: "owntracks/fabrizio/s5"
+  name: "Batteria note4 fabrizio"
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.batt }}'
+
+- platform: mqtt
+  state_topic: "owntracks/danila/s5"
+  name: "Batteria s5 danila"
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.batt }}'
+
+- platform: mqtt
+  state_topic: "owntracks/federico/s6"
+  name: "Batteria s6 federico"
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.batt }}'
+
+- platform: mqtt
+  state_topic: "owntracks/samuele/s5"
+  name: "Batteria s5 samuele"
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.batt }}'
+
+#- platform: mqtt
+#  state_topic: "/esp203/pir203/pir203"
+#  name: "PIR203"
+#  unit_of_measurement: "%"
+#  value_template: '{{ value_json.switchcmd }}'
+
+- platform: mqtt
+  state_topic: "/esp203/temperature203/Temperature"
+  name: "temperature203"
+  unit_of_measurement: "°C"
+#  value_template: '{{ value_json.switchcmd }}'
+
+- platform: mqtt
+  state_topic: "/esp203/temperature203/Humidity"
+  name: "humidity203"
+  unit_of_measurement: "°C"
+#  value_template: '{{ value_json.switchcmd }}'
+
+- platform: mqtt
+  name: "Wifi Signal Exterior"
+  state_topic: "/esp203/wifi/wifi"
+  qos: 0
+  unit_of_measurement: "dB"
+  
+- platform: mqtt
+  state_topic: "/esp206/pir206/pir206"
+  name: "PIR206"
+#  unit_of_measurement: "%"
+#  value_template: '{{ value_json.switchcmd }}'
+
+- platform: google_travel_time
+  name: Fabrizio to casa
+  api_key: !secret google_travel_time_key
+  origin: device_tracker.fabrizio_note4
+  destination: zone.home
+
+- platform: google_travel_time
+  name: Danila to casa
+  api_key: !secret google_travel_time_key
+  origin: device_tracker.danila_s5
+  destination: zone.home  
+
+- platform: google_travel_time
+  name: Samuele to casa
+  api_key: !secret google_travel_time_key
+  origin: device_tracker.samuele_s5
+  destination: zone.home
+
+- platform: google_travel_time
+  name: Federico to casa
+  api_key: !secret google_travel_time_key
+  origin: device_tracker.federico_s6
+  destination: zone.home  
+
+#- platform: torque
+#  name: Fiat_Panda
+#  email: fabrizio.lanni@alice.it
+  
+- platform: rest
+  resource: http://192.168.123.203/json
+  value_template: '{{ value_json.Sensors[1].pir203 | round(0) }}'
+  method: GET
+  name: pir203
+  body_off: "0"
+  body_on: "1"
+  
+#- platform: rest
+#  resource: http://192.168.123.203/json
+#  value_template: '{{ value_json.Sensors[0].Temperature | round(2) }}'
+#  method: GET
+#  name: temperature203
+#  unit_of_measurement: '°C'
+
+#- platform: rest
+#  resource: http://192.168.123.203/json
+#  value_template: '{{ value_json.Sensors[0].Humidity | round(2) }}'
+#  method: GET
+#  name: humidity203
+#  unit_of_measurement: '%'
+
+#- platform: rest
+#  resource: http://192.168.123.206/json
+#  value_template: '{{ value_json.Sensors[2].pir | round(0) }}'
+#  method: GET
+#  name: pir206
+#  body_off: "0"
+#  body_on: "1"
+  
+- platform: rest
+  resource: http://192.168.123.207/json
+  value_template: '{{ value_json.Sensors[0].Temperature | round(2) }}'
+  method: GET
+  name: tempacquario207
+  unit_of_measurement: '°C'
+
+- platform: rest
+  resource: http://192.168.123.206/json
+  value_template: '{{ value_json.Sensors[0].Temperature | round(2) }}'
+  method: GET
+  name: tempacquario206
+  unit_of_measurement: '°C'
+  
+- platform: rest
+  resource: http://192.168.123.207/json
+  value_template: '{{ value_json.Sensors[2].Temperature | round(2) }}'
+  method: GET
+  name: temperature207
+  unit_of_measurement: '°C'
+  
+- platform: rest
+  resource: http://192.168.123.207/json
+  value_template: '{{ value_json.Sensors[2].Humidity | round(2) }}'
+  method: GET
+  name: humidity207
+  unit_of_measurement: '%'
+  
+- platform: rest
+  resource: http://192.168.123.207/json
+  value_template: '{{ value_json.Sensors[1].pir | round(0) }}'
+  method: GET
+  name: pir207
+  body_off: "0"
+  body_on: "1"
+
+- platform: rest
+  resource: http://192.168.123.204/json
+  value_template: '{{ value_json.Sensors[0].Temperature | round(2) }}'
+  method: GET
+  name: temperature204
+  unit_of_measurement: '°C'
+
+- platform: rest
+  resource: http://192.168.123.204/json
+  value_template: '{{ value_json.Sensors[0].Humidity | round(2) }}'
+  method: GET
+  name: humidity204
+  unit_of_measurement: '%'
+  
+- platform: rest
+  resource: http://192.168.123.204/json
+  value_template: '{{ value_json.Sensors[1].Gas | round(2) }}'
+  method: GET
+  name: gas204
+
+- platform: template
+  sensors:
+    epsonsx620fw:
+      friendly_name: 'Epson Sx620fw'
+      value_template: >-
+          {%- if is_state("device_tracker.epsonsx620fw", "home") %}
+              Accesa
+          {% else %}
+              Spenta
+          {%- endif %}
+      entity_id:
+        - device_tracker.hp_photosmart_5520
+
+- platform: template
+  sensors:
+    season:
+      friendly_name: 'Stagioni'
+      value_template:  >-
+          {%- if now().month >= 3 and now().month <= 5 %}
+              Primavera
+          {% elif now().month >= 6 and now().month <= 8 %}
+              Estate
+          {% elif now().month >= 9 and now().month <= 11 %}
+              Autunno
+          {% else %}
+              Inverno
+          {%- endif %}
+          
+- platform: scrape
+  name: Release
+  resource: https://home-assistant.io
+  select: ".current-version h1"
+  
+#<h1>Current Version: 0.35.3</h1> 
+
+- platform: scrape
+  resource: http://192.168.123.40
+  name: Versione
+  select: ".current-version height"
+  value_template: '{{ value.split("Ink_C.PNG height=")[1] }}'
+
+#<img class="color" src="http://192.168.123.40/PRESENTATION/IMAGE/Ink_C.PNG" height="36">

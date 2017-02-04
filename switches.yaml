@@ -1,0 +1,146 @@
+- platform: command_line
+  switches:
+    allarme:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.202/mode/8/o /usr/bin/curl -X GET http://192.168.123.202/digital/8/0"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.202/digital/8/1"
+      
+- platform: command_line
+  switches:
+    cancello:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.202/mode/7/o /usr/bin/curl -X GET http://192.168.123.202/digital/7/0 sleep 3 /usr/bin/curl -X GET http://192.168.123.202/digital/7/1"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.202/digital/7/1"
+
+- platform: command_line
+  switches:
+    cancelletto:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.202/mode/5/o /usr/bin/curl -X GET http://192.168.123.202/digital/5/0 sleep 3 /usr/bin/curl -X GET http://192.168.123.202/digital/5/1"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.202/digital/5/1"
+
+- platform: command_line
+  switches:
+    caldaia_manuale:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.202/mode/6/o /usr/bin/curl -X GET http://192.168.123.202/digital/6/0"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.202/digital/6/1"
+      
+- platform: command_line
+  switches:
+    caldaia_automatica:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.202/mode/9/o /usr/bin/curl -X GET http://192.168.123.202/digital/9/0"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.202/digital/9/1"
+      
+- platform: command_line
+  switches:
+    pompa1:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.202/mode/9/o /usr/bin/curl -X GET http://192.168.123.202/digital/9/0"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.202/digital/9/1"
+
+- platform: command_line
+  switches:
+    pompa2:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.202/mode/9/o /usr/bin/curl -X GET http://192.168.123.202/digital/9/0"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.202/digital/9/1"
+
+- platform: command_line
+  switches:
+    pompa3:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.202/mode/9/o /usr/bin/curl -X GET http://192.168.123.202/digital/9/0"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.202/digital/9/1"
+
+# platform: command_switch
+- platform: command_line
+  switches:
+    test4:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.202/mode/9/o /usr/bin/curl -X GET http://192.168.123.202/digital/9/0"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.202/digital/9/1"
+
+#- platform: command_line
+#  switches:
+#    lolin2:
+#      command_on: "/usr/bin/curl -X GET http://192.168.123.203/mode/3/o /usr/bin/curl -X GET http://192.168.123.203/digital/3/0"
+#      command_off: "/usr/bin/curl -X GET http://192.168.123.203/digital/3/1"
+      
+# platform: command_switch
+- platform: command_line
+  switches:
+    lolin1:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.203/control?cmd=GPIO,16,0"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.203/control?cmd=GPIO,16,1"    
+#      command_on: "/usr/bin/curl -X GET http://192.168.123.203/mode/0/o /usr/bin/curl -X GET http://192.168.123.203/digital/0/0"
+#      command_off: "/usr/bin/curl -X GET http://192.168.123.203/digital/0/1"
+
+- platform: command_line
+  switches:
+    pompa11:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.206/control?cmd=GPIO,10,0"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.206/control?cmd=GPIO,10,1"
+#      command_on: "/usr/bin/curl -X GET http://192.168.123.206/mode/14/o /usr/bin/curl -X GET http://192.168.123.206/digital/14/0"
+#      command_off: "/usr/bin/curl -X GET http://192.168.123.206/digital/14/1"
+
+- platform: command_line
+  switches:
+    pompa12:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.206/control?cmd=GPIO,12,0"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.206/control?cmd=GPIO,12,1"
+#      command_on: "/usr/bin/curl -X GET http://192.168.123.206/mode/12/o /usr/bin/curl -X GET http://192.168.123.206/digital/12/0"
+#      command_off: "/usr/bin/curl -X GET http://192.168.123.206/digital/12/1"
+
+- platform: command_line
+  switches:
+    pompa13:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.206/control?cmd=GPIO,13,0"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.206/control?cmd=GPIO,13,1"
+#      command_on: "/usr/bin/curl -X GET http://192.168.123.206/mode/13/o /usr/bin/curl -X GET http://192.168.123.206/digital/13/0"
+#      command_off: "/usr/bin/curl -X GET http://192.168.123.206/digital/13/1"
+
+- platform: command_line
+  switches:
+    pompa14:
+      command_on: "/usr/bin/curl -X GET http://192.168.123.206/control?cmd=GPIO,14,0"
+      command_off: "/usr/bin/curl -X GET http://192.168.123.206/control?cmd=GPIO,14,1"
+
+- platform: wake_on_lan
+  mac_address: "54:04:a6:81:d1:e8"
+  name: "Elastix"
+  host: "192.168.123.200"
+
+#- platform: wake_on_lan
+#  mac_address: "78:A5:DD:01:46:D4"
+#  name: "camera1"
+#  host: "192.168.123.10"
+
+#- platform: wake_on_lan
+#  mac_address: "54:04:a6:81:d1:e8"
+#  name: "camera2"
+#  host: "192.168.123.11"
+  
+#- platform: wake_on_lan
+#  mac_address: "00:B0:02:00:7B:2F"
+#  name: "camera3"
+#  host: "192.168.123.12"
+
+#- platform: wake_on_lan
+#  mac_address: "54:CD:EE:00:38:9C"
+#  name: "camera4"
+#  host: "192.168.123.13"
+  
+#- platform: rest
+#  resource: http://lanni.asuscomm.com/zm/api/monitors/8.json
+#  name: "Cam5"
+#  body_on: "Monitor[Function]=Modect&Monitor[Enabled]=1"
+#  body_off: "Monitor[Function]=Monitor&Monitor[Enabled]=1"
+
+#- platform: zoneminder
+#  command_on: Modect
+#  command_off: Monitor
+    
+#- platform: zoneminder
+#  command_on: Modect
+#  command_off: None 
+  
+#- platform: command_line
+#  switches:
+#    alarma:
+#      command_on: "/usr/bin/zmpkg.pl OutHouse"
+#      command_off: "/usr/bin/zmpkg.pl InHouse"
+#      command_state: "/root/.homeassistant/zm/getstate.sh"
+#      value_template: '{{ value == "OutHouse" }}'

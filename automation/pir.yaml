@@ -1,0 +1,17 @@
+alias: allarme pir piano terra 1
+#alias: 'allarme_pir_piano_terra_1'
+trigger:
+  platform: numeric_state
+  entity_id: sensor.pir_pt
+#   value_template: '{{ state.attributes.battery }}'
+  above: 100
+action:
+  - service: switch.turn_on
+    entity_id: switch.allarme
+  - service: notify.puschetta
+#  data: {"message":'Attenzione presenza GAS piano terra 1 '}
+#    data:
+    data_template:
+      message: 'Attenzione presenza PIR piano terra 1 {{now().strftime("%d-%m-%Y %H:%M:%S")}}'
+#    message: 'Attenzione presenza PIR piano terra 1'
+

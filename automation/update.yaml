@@ -1,0 +1,11 @@
+alias: aggiornamento disponibile
+trigger:
+  - platform: state
+    entity_id: updater.updater
+action:
+  - service: notify.pushetta
+#  data:
+    data_template:
+#      title: "Update"
+      message: 'Un aggiornamento è disponibile {{now().strftime("%d-%m-%Y %H:%M:%S")}}'
+#    message: 'Un aggiornamento è disponibile'

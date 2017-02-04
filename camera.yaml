@@ -1,0 +1,27 @@
+camera 1:
+  - platform: mjpeg
+    name: camera1
+    username: admin
+    password: !secret zm_password
+    mjpeg_url: http://192.168.123.10/videostream.cgi
+
+camera 2:
+  - platform: mjpeg
+    name: camera2
+    username: admin
+    password: !secret zm_password
+    mjpeg_url: http://192.168.123.11/videostream.cgi
+
+camera 3:
+  - platform: mjpeg
+    name: camera3
+    username: admin
+    password: !secret zm_password
+    mjpeg_url: http://192.168.123.12/videostream.cgi
+
+camera 4:
+  - platform: mjpeg
+    name: camera4
+    username: admin
+    password: !secret zm_password
+    mjpeg_url: http://192.168.123.13/videostream.cgi

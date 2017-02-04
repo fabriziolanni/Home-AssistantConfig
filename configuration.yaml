@@ -1,0 +1,365 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Fabrizio lanni casa
+  # Location required to calculate the time the sun rises and sets
+  latitude: 41.4985804
+  longitude: 13.7037659
+  elevation: 110
+  # C for Celcius, F for Fahrenheit
+  temperature_unit: C
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Rome
+  customize: !include customize.yaml
+
+#conversation:
+
+#frontend:
+
+discovery:
+
+#zeroconf:
+
+recorder:
+  purge_days: 7
+  db_url: !secret db_url
+
+script: !include scripts.yaml
+sensor: !include sensor.yaml
+zone: !include zone.yaml 
+#group: !include_dir_merge_named groups
+group: !include group.yaml
+# camera: !include devices/cameras.yaml 
+# camera: !include cameras.yaml
+automation: !include automation2.yaml
+switch: !include switches.yaml
+device_tracker: !include device_trackers.yaml
+#camera: !include devices/cameras.yaml
+notify: !include notify.yaml
+sun:
+
+updater:
+
+# Show links to resources in log and frontend
+# introduction:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+    
+http:
+  api_password: !secret http_password
+  base_url: lanni.asuscomm.com
+  ip_ban_enabled: True
+  login_attempts_threshold: 5
+#  ssl_certificate: /etc/pki/tls/certs/localhost.crt
+#  ssl_key: /etc/pki/tls/private/localhost.key
+#  ssl_certificate: /root/.homeassistant/fullchain.pem
+#  ssl_key: /root/.homeassistant/privkey.pem  
+
+tts:
+  platform: google
+  cache: true
+  cache_dir: /tmp/tts
+  time_memory: 300
+  language: 'it' 
+  
+google:
+  client_id: 354039308956-3i173r69gkb1lhqus913ms68meqji3r0.apps.googleusercontent.com
+  client_secret: !secret client_secret
+  
+mqtt:
+  broker: m20.cloudmqtt.com
+  port: 22065
+  client_id: homeassistant
+  keepalive: 60
+  username: czezrvfj
+  password: !secret mqtt_secret
+#mqtt:
+#  broker: 127.0.0.1
+#  port: 8883
+#  client_id: home-assistant
+#  username: admin
+#  password: df6870
+#  client_key: /etc/mosquitto/certs/hass.key
+#  client_cert: /etc/mosquitto/certs/hass.crt  
+  
+proximity:
+  home:
+    devices:
+      - device_tracker.fabrizio_s5
+#      - device_tracker.594665f5
+      - device_tracker.danila_s6
+    tolerance: 50
+  lavoro_arce:
+    devices:
+#      - device_tracker.594665f5
+      - device_tracker.fabrizio_s5
+    tolerance: 50
+
+input_select:
+  stagione:
+    name: Inverno-estate Caldaia
+    options:
+     - Inverno
+     - Estate
+    initial: Estate
+#    icon: mdi:panda
+  start_mattina:
+    name: start_mattina
+    icon: mdi:alarm
+    initial: "06:30:00"
+    options:
+     - "06:00:00"
+     - "06:15:00"
+     - "06:30:00"
+     - "06:45:00"
+     - "07:00:00"
+  stop_mattina:
+    name: stop_mattina
+    icon: mdi:alarm
+    initial: "07:30"
+    options:
+     - "07:00"
+     - "07:15"
+     - "07:30"
+     - "07:45"
+     - "08:00"
+  start_pomeriggio:
+    name: start_pomeriggio
+    icon: mdi:alarm
+    initial: "17:30"
+    options:
+     - "17:00"
+     - "17:15"
+     - "17:30"
+     - "17:45"
+     - "18:00"
+  stop_pomeriggio:
+    name: stop_pomeriggio
+    icon: mdi:alarm
+    initial: "22:00:00"
+    options:
+     - "20:45:00"
+     - "21:00:00"
+     - "21:15:00"
+     - "21:30:00"
+     - "21:45:00"
+     - "22:00:00"
+     - "22:15:00"
+     - "22:30:00"
+  risveglio:
+    name: risveglio mattina
+    icon: mdi:alarm
+    initial: "06:35"
+    options:
+     - "06:00"
+     - "06:05"
+     - "06:10"
+     - "06:15"
+     - "06:20"
+     - "06:25"
+     - "06:30"
+     - "06:35"
+     - "06:40"
+     - "06:45"
+     - "06:50"
+     - "06:55"
+     - "07:00"
+     - "07:05"
+     - "07:10"
+     - "07:15"
+     - "07:20"
+     - "07:25"
+     - "07:30"
+     - "07:35"
+     - "07:40"
+     - "07:45"
+     - "07:50"
+     - "07:55"
+     
+input_slider:
+  temp_mattina:
+    name: temp_mattina
+    initial: 22
+    min: 16
+    max: 24
+    step: 1
+  temp_giorno:
+    name: temp_giorno
+    initial: 16
+    min: 16
+    max: 24
+    step: 1
+  temp_pomeriggio:
+    name: temp_pomeriggio
+    initial: 22
+    min: 16
+    max: 24
+    step: 1
+  temp_notte:
+    name: temp_notte
+    initial: 16
+    min: 16
+    max: 24
+    step: 1
+  slider_houres:
+    name: allarmeore
+    initial: 6
+    min: 0
+    max: 23
+    step: 1
+  slider_minutes:
+    name: allarmeminuti
+    initial: 0
+    min: 0
+    max: 55
+    step: 5
+    
+input_boolean:
+  alarm:
+    name: Alarm
+    initial: off
+    icon: mdi:alarm 
+  restart_hass:
+    name: Restart HASS
+    initial: off
+    icon: mdi:autorenew    
+#input_boolean:
+#  risveglio:
+#    name: Imposta Risveglio
+#    initial: off
+#    icon: mdi:alarm
+#  lightreveil:
+#    name: Risveglio Naturale
+#    initial: off
+#    icon: mdi:theme-light-dark  
+#  notify_home_2:
+#    name: Notify when someone arrives home
+#    initial: off
+#    icon: mdi:car
+#  acquista:
+#  pane:
+#  latte:
+#  cotolette:
+#  patatine:
+#  nutella:
+#  cocacola:
+#  aranciata:
+#  shampo:
+#  caffe:
+#  formaggio:
+#  gelato:
+#  cartaigienica:
+  
+alarm_control_panel:
+  platform: manual
+  name: "HA Alarm"
+  code: 6870
+  pending_time: 60
+  trigger_time: 120
+
+light:
+  - platform: yeelight
+    devices:
+      192.168.123.185:
+        name: yeelightsamufede
+        
+weblink:
+  entities:
+    - name: Router TIM
+      url: http://192.168.123.254
+      icon: mdi:router-wireless
+    - name: Router ASUS
+      url: http://192.168.123.253
+      icon: mdi:router-wireless
+    - name: Plex
+      url: https://192.168.123.200:32400/web/index.html
+      icon: mdi:firefox
+    - name: Zoneminder
+      url: https://192.168.123.200/zm
+      icon: mdi:router-wireless
+    - name: Webmin
+      url: https://192.168.123.200:10000
+      icon: mdi:router-wireless
+    - name: Home Assistant
+      url: https://home-assistant.io
+      icon: mdi:firefox
+
+climate:
+#  view: yes
+#  platform: heat_control
+  platform: generic_thermostat
+  name: Termostato Caldaia
+  heater: switch.caldaia_manuale
+  target_sensor: sensor.temperature203
+  target_temp: 20
+  min_temp: 14
+  max_temp: 25
+  min_cycle_duration:
+  # At least one of these must be specified:
+#    days: 2
+#    hours: 1
+    minutes: 2
+#    seconds: 5
+#    milliseconds: 20
+
+#ifttt:
+#  key: jSTu6cWP9mts5gUO08OGUNhVrHaOFnPBI6Hcsr1xJEm 
+
+#media_player:
+#  platform: emby
+#  host: 192.168.123.200
+#  api_key: "56c78e00c8e44494bdbf5c55c2c83c2f"
+
+#google:
+#  client_id:  1037153383186-2lmfvkj6u70cecrq5qaadvhlmp60s7t2.apps.googleusercontent.com 
+#  client_secret:  4tok-KtA5J4Jp8mO71JaVBPH 
+
+#zoneminder:
+#  host:
+#  host: lanni.asuscomm.com
+#  ssl: True
+#  host: 127.0.0.1
+#  host: 192.168.123.200
+#  host: localhost.localdomain
+#  path: /zm/
+#  username: admin
+#  password: !secret zm_password    
+#  password: df6870
+
+media_player:
+  - platform: vlc
+  
+#media_player:
+#  - platform: plex
+
+image_processing:
+  - platform: openalpr_cloud
+    api_key: !secret image_processing_key
+#    api_key: 'pk_77a501e41fa05d690a7ca81f'
+    region: eu
+    source:
+     - entity_id: camera.my_android_camera
+  - platform: microsoft_face_identify
+    group: family
+    name: fabrizio
+    source:
+     - entity_id: camera.my_android_camera
+
+microsoft_face:
+  api_key: !secret microsoft_face_key
+
+camera 1:
+- platform: mjpeg
+  mjpeg_url: http://192.168.123.56:8080/video
+  name: My Android Camera
+
+xiaomi:
+ gateways:
+   - sid:
+#   - sid: F0:B4:29:CC:61:F4
+     key: !secret xiaomi_gateways_key
+#   - interface: 192.168.123.14

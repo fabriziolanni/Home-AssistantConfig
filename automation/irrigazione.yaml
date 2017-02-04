@@ -1,0 +1,43 @@
+alias: Attiva irrigazione
+trigger: 
+  - platform: time
+    hours: 21
+    minutes: 17
+    seconds: 00
+#    after: '06:00:00'
+#    before: '20:00:00'
+#    weekday:
+#      - mon
+#      - tue
+#      - wed
+#      - thu
+#      - fri
+#      - sat
+#      - sun
+#    platform: sun                                                                                                                                                                                                  
+#    event: sunset                                                                                                                                                                                                  
+#    offset: "-00:00:30"                                                                                                                                                                        
+condition:
+  condition: and
+  conditions:
+#This is not raining                                                                                                                                                                                               
+    - condition: numeric_state                                                                                                                                                                                      
+      entity_id: sensor.dark_sky_precip_intensity                                                                                                                                                                   
+    # below: <=                                                                                                                                                                                                  #
+      below: 4                                                                                                                                                                                                     
+#And there is few chance that it's gonna rain                                                                                                                                                                      
+    - condition: numeric_state                                                                                                                                                                                      
+      entity_id: sensor.dark_sky_precip_probability                                                                                                                                                                 
+      below: 50                                                                                                                                                                                                    
+#    platform: template                                                                                                                                                                                            
+#    value_template: '{{ sensor.weather_precip_intensity < 1 && sensor.weather_precip_probability < 70 }}' 
+# At least one of the following is required.                                                                                                                       
+action: 
+#  service: notify.mypushbullet
+#  data:
+#    title: "Sveglia!"
+#    message: "Buongiorno, è ora di alzarsi"
+   service: script.irrigazione  
+#  service: homeassistant.turn_on                                                                                                                                                                                  
+#  entity_id: script.irrigazione  
+

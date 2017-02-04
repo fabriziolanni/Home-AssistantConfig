@@ -1,0 +1,14 @@
+#alias: 'Rain is over'
+- trigger:
+    - platform: numeric_state
+      entity_id: sensor.dark_sky_precip_intensity
+         # One of the next values has to be defined above: 0.1
+      below: 1
+- condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'above_horizon'
+- action:
+    - service: scene.turn_on
+      entity_id: scene.rainy_day_off
+

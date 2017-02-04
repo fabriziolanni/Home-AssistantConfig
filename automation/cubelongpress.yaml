@@ -1,0 +1,19 @@
+
+alias: Turn on bedroom Lights scene normal on hold
+trigger:
+  platform: event
+  event_type: click
+  event_data:
+      entity_id: binary_sensor.cube_158d000114845d
+      click_type: hold
+action:
+  service: scene.turn_on
+  entity_id: scene.chambre_normal
+  
+
+#trigger:
+#  platform: event
+#    event_type: cube_action
+#    event_data:
+#        entity_id: binary_sensor.cube_158d000xxxxxc2
+#        action_type: flip90

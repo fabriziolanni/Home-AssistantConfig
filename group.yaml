@@ -1,0 +1,240 @@
+_Fabrizio lanni casa:
+  - group.famiglia
+  - group.tempo
+  - group.server
+  - group.condizioni_interne
+Famiglia:
+#  - device_tracker.594665f5
+  - device_tracker.fabrizio_s5
+  - sensor.batteria_note4_fabrizio
+  - device_tracker.danila_s6
+  - sensor.batteria_s5_danila
+  - device_tracker.federico_s6
+  - sensor.batteria_s6_federico
+  - device_tracker.samuele_s5
+  - sensor.batteria_s5_samuele
+Server:
+  - sensor.web_scrape
+  - sensor.disk_use_
+  - sensor.disk_use__2
+  - sensor.disk_use_home
+  - sensor.disk_use_home_2
+  - sensor.cpu
+  - sensor.cpu_use
+  - sensor.ram_free
+  - sensor.ram_use
+  - sensor.ram_use_2
+  - sensor.disk_free
+Condizioni Esterne:
+  - sun.sun
+  - sensor.time
+  - sensor.date
+  - sensor.dark_sky_summary
+  - sensor.dark_sky_icon
+  - sensor.dark_sky_temperature
+  - sensor.dark_sky_apparent_temperature
+  - sensor.dark_sky_humidity
+  - sensor.dark_sky_precip
+  - sensor.dark_sky_precip_intensity
+  - sensor.dark_sky_precip_probability
+  - sensor.dark_sky_daily_low_temperature
+  - sensor.dark_sky_daily_high_temperature
+Breaches:
+  - sensor.breaches_fabriziolannialiceit
+Cambio_USD:
+  - sensor.usd_eur
+  - sensor.usd_gbp
+  - sensor.usd_cad
+Condizioni_Interne:
+  - sensor.INTERNA_temperature
+#      entity_picture: https://dl.dropboxusercontent.com/u/81386/HA-Stuff/temperature.png
+#      friendly_name: 'Temperatura Interna'
+  - sensor.INTERNA_humidity
+#      entity_picture: https://dl.dropboxusercontent.com/u/81386/HA-Stuff/humidity.png
+#      friendly_name: 'Umidità Interna'
+Condizioni_Interne_1P:
+  - sensor.temperatura_1p
+  - sensor.umidita_1p
+  - sensor.gas_pt
+Condizioni_Interne_1Pw:
+  - sensor.PIANO1_temperature
+  - sensor.PIANO1_humidity
+Condizioni_ingresso:
+  - sensor.temperature207
+  - sensor.humidity207
+Condizioni_scala1p:
+  - sensor.temperature203
+  - sensor.humidity203
+Condizioni_Interne_cucina:
+  - sensor.temperature204
+  - sensor.humidity204
+  - sensor.gas204
+#Condizioni_Ingressino:
+#  - sensor.ingressino_temperature
+#  - sensor.ingressino_humidity
+#Allarme:
+#  view: yes
+#  entities:
+#    - gruop.sistema_allarme
+Sistema_allarme:
+  - alarm_control_panel.ha_alarm
+  - switch.allarme
+#    - sensor.ingressino_pirmotion
+  - sensor.interna_pirmotion
+  - sensor.temperatura_acquario_pir
+  - sensor.test_pir
+  - sensor.pir_pt
+  - sensor.pir_1
+  - sensor.piano1_pir
+  - sensor.pir203
+  - sensor.pir206
+  - sensor.pir207 
+Cancelli:
+  view: yes
+  entities:
+    - switch.cancelletto
+    - switch.cancello
+Caldaia:
+  view: no
+  entities:
+    - switch.caldaia_manuale
+    - switch.caldaia_automatica
+    - input_select.stagione
+ #   - thermostat.termostato_caldaia
+    - climate.termostato_caldaia
+set_caldaia:
+  view: no
+  entities:
+    - input_select.start_mattina
+    - input_select.stop_mattina 
+    - input_slider.temp_mattina
+#  - input_select.start_giorno
+#  - input_select.stop_giorno 
+    - input_slider.temp_giorno
+    - input_select.start_pomeriggio
+    - input_select.stop_pomeriggio
+    - input_slider.temp_pomeriggio
+    - input_slider.temp_notte
+#  - input_select.stop_notte 
+#  - input_slider.temp_notte
+CALDA:
+  name: Caldaia
+  view: yes
+  entities:
+    - group.caldaia
+    - group.set_caldaia
+Speedtest:
+#   name: Speedtest
+#    icon: mdi:account-multiple
+#    view: yes
+  entities:
+    - sensor.speedtest_download
+    - sensor.speedtest_ping
+    - sensor.speedtest_upload
+Risveglio:
+  - input_boolean.lightreveil
+  - input_boolean.risveglio
+  - input_select.risveglio
+Shopping:
+  name: Lista della spesa
+  view: yes
+  entities:
+    - input_boolean.acquista
+    - input_boolean.pane
+    - input_boolean.latte
+    - input_boolean.nutella
+    - input_boolean.cotolette
+    - input_boolean.patatine
+    - input_boolean.pancarre
+    - input_boolean.aranciata
+    - input_boolean.cocacola
+    - input_boolean.caffe
+    - input_boolean.shampo
+    - input_boolean.formaggio
+    - input_boolean.gelato
+    - input_boolean.cartaigienica 
+WakeOnLan:
+#     name: WakeOnLan
+#     view: yes
+#    entities:
+  - switch.elastix
+  - switch.camera1
+  - switch.camera2
+  - switch.camera3
+  - switch.camera4
+Irrigazione Giardino:
+  - script.irrigazione
+  - switch.pompa11
+  - switch.pompa12
+  - switch.pompa13
+Distanza da casa:
+  - sensor.fabrizio_to_casa
+  - sensor.danila_to_casa
+  - sensor.samuele_to_casa
+  - sensor.federico_to_casa
+Acquario:
+  - sensor.tempacquario207
+  - sensor.tempacquario206
+Temp-Hum:
+#  name: Caldaia
+  view: yes
+  entities:
+    - group.Condizioni_Interne_cucina
+    - group.Condizioni_scala1p
+    - group.Condizioni_ingresso
+    - group.Condizioni_Interne_1Pw
+    - group.Condizioni_Interne_1P
+    - group.Condizioni_Interne
+restart_hass:
+  - input_boolean.restart_hass
+light:
+  view: yes
+  entities:
+    - light.yeelightsamufede
+    - light.gateway_light_f0b429cc61f4
+lan_device:
+  view: yes
+  entities:
+    - group.lan
+lan:
+  - device_tracker.EnergyControl
+  - device_tracker.gxp2000_1
+  - device_tracker.gxp2000_2
+  - device_tracker.001313002c90
+  - device_tracker.002454cbfeb5
+  - device_tracker.00265e8a9ac1
+  - device_tracker.epsonsx620fw
+  - device_tracker.00b002007b0e
+  - device_tracker.00b002007b2f
+  - device_tracker.18fe34d796cd
+  - device_tracker.esp8266_203
+  - device_tracker.20a90e0885fb
+  - device_tracker.yeelightsamufede
+  - device_tracker.3052cb4af205
+  - device_tracker.DSL_N12U
+  - device_tracker.50465d6c0030
+  - device_tracker.telecamera4
+  - device_tracker.5ccf7f1348a8
+  - device_tracker.60019406a727
+  - device_tracker.6001940b9bb0
+  - device_tracker.6cf3734d9083
+  - device_tracker.70f1a156680d
+  - device_tracker.telecamera1
+  - device_tracker.843838b6d1c5
+  - device_tracker.8c89a5cdeaf9
+  - device_tracker.90a2da0efe40
+  - device_tracker.90a2da0efe41
+  - device_tracker.danila_s5
+  - device_tracker.danila_s6
+  - device_tracker.Gear_s3
+  - device_tracker.e8508b0844e4
+  - device_tracker.ec0ec4bb7763
+  - device_tracker.ec1f7260019a
+  - device_tracker.Xiaomi_gateway
+  - device_tracker.fabrizionote4
+  - device_tracker.fabrizio_note4
+  - device_tracker.fabrizio_s5
+  - device_tracker.federico_s6
+  - device_tracker.samuele_s5
+  - device_tracker.samuele_s6
+    

@@ -1,0 +1,31 @@
+- platform: owntracks
+  max_gps_accuracy: 200
+
+- platform: mqtt
+  qos: 1
+  devices:
+    fabrizio_s5: /owntracks/fabrizio/s5
+#    fabrizio_note4: /owntracks/fabrizio/note4
+#    fabrizio_note4: /location/fabrizio
+#      entity_picture: https://192.168.123.200/himages/fabrizio.jpg
+    homeassistant: /location/homeassistant
+    samuele_s5: /owntracks/samuele/s5
+    federico_s6: /owntracks/federico
+    danila_s6: /owntracks/danila
+#    danila_s6: /location/danila
+
+- platform: gpslogger
+
+- platform: nmap_tracker
+  hosts: 192.168.123.1/24
+  # The number of minutes nmap will not scan this device, assuming it is home, in order to preserve the device battery.
+  home_interval: 10
+  # If new discovered devices are tracked by default (default: yes)
+  track_new_devices: yes
+  # Seconds between each scan for new devices (default: 12)
+  interval_seconds: 600
+  # Seconds to wait till marking someone as not home after not being seen
+  # (default: 180)
+  consider_home: 300
+#  exclude:
+#- 192.168.123.200

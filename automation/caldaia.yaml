@@ -1,0 +1,35 @@
+#--------------da correggere
+alias: 'Attiva caldaia quando note 4 casa'
+trigger:
+  platform: state
+  entity_id: device_tracker.fabrizio_note4
+#    state: 'home'
+  from: 'not_home'
+  to: 'home'
+#  platform: state
+#  entity_id: sensor.date
+#  after: '2016-01-05' 
+#  before: '2016-03-05' 
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      after : '10:00:00'
+      before : '23:00:00'
+#    - condition: date
+#      after : '2016-01-01'
+#      before : '2016-03-01'
+    - condition: numeric_state
+      entity_id: sensor.interna_temperature
+#    above: 13
+      below: 16
+#    platform: state
+#    entity_id: device_tracker.fabrizio_note4
+#    state: 'home'
+action:
+  - service: notify.pushetta
+    data_template:
+      message: 'caldaia accesa {{now().strftime("%d-%m-%Y %H:%M:%S")}}}'
+#    data: {"message":'caldaia accesa {{now().strftime("%d-%m-%Y %H:%M:%S")}}'}
+  - service: homeassistant.turn_on
+    entity_id: script.caldaia_on

@@ -1,0 +1,17 @@
+#Allarme:
+#  view: yes
+#  entities:
+#    - group.sistema_allarme
+Sistema_allarme:
+  - alarm_control_panel.ha_alarm
+  - switch.allarme
+#    - sensor.ingressino_pirmotion
+  - sensor.interna_pirmotion
+  - sensor.temperatura_acquario_pir
+  - sensor.test_pir
+  - sensor.pir_pt
+  - sensor.pir_1
+  - sensor.piano1_pir
+  - sensor.pir203
+  - sensor.pir206
+  - sensor.pir207 

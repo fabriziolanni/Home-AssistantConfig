@@ -1,0 +1,32 @@
+#caldaia_on: !include script/caldaia_on.yaml
+irrigazione: !include script/irrigazione.yaml
+#light_on: !include script/light.yaml
+allarmeoff: !include script/allarmeoff.yaml
+
+timed_lamp:
+#alias: "Turn on lamp and set timer"
+  sequence:
+  - service: script.turn_off
+    data:
+      entity_id: script.timer_off
+  - service: switch.turn_on
+    data:
+      entity_id: switch.lolin1
+  - service: notify.pushetta
+    data_template: 
+      message: 'Luce 1 accesa {{now().strftime("%d-%m-%Y %H:%M:%S")}}'
+  - service: script.turn_on
+    data:
+      entity_id: script.timer_off
+
+timer_off:
+# alias: "Turn off lamp after 10 minutes"
+  sequence:
+  - delay:
+      minutes: 2
+  - service: switch.turn_off
+    data:
+      entity_id: switch.lolin1
+  - service: notify.pushetta
+    data_template: 
+      message: 'Luce 1 spenta {{now().strftime("%d-%m-%Y %H:%M:%S")}}'

@@ -1,0 +1,2 @@
+restart_ha: sudo service hass-daemon restart &
+#restart_server: sudo 

@@ -1,0 +1,17 @@
+- alias: Living dim lights
+  hide_entity: False
+  trigger:
+      - platform: time
+        minutes: '/5'
+        seconds: 00
+  condition:
+    - condition: and
+      conditions:
+      - condition: time
+        after: '22:00:00'
+        before: '22:59:00'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.all_lights
+      data_template:
+        brightness: '{{ 255 - now().minutes }}'

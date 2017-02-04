@@ -1,0 +1,11 @@
+alias: Msg gas cucina
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.gas204
+    above: 100
+action:
+  - service: switch.turn_on
+    entity_id: switch.allarme
+  - service: notify.pushetta
+    data_template:
+      message: 'Attenzione presenza GAS in cucina {{now().strftime("%d-%m-%Y %H:%M:%S")}}'

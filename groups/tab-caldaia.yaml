@@ -1,0 +1,22 @@
+Caldaia:
+  - switch.caldaia_manuale
+  - switch.caldaia_automatica
+  - input_select.stagione
+ #   - thermostat.termostato_caldaia
+  - climate.termostato_caldaia
+set_caldaia:
+  - input_select.start_mattina
+  - input_select.stop_mattina 
+  - input_slider.temp_mattina
+#  - input_select.start_giorno
+#  - input_select.stop_giorno 
+  - input_slider.temp_giorno
+  - input_select.start_pomeriggio
+  - input_select.stop_pomeriggio
+  - input_slider.temp_pomeriggio
+  - input_slider.temp_notte
+#  - input_select.stop_notte 
+#  - input_slider.temp_notte
+CALDA:
+  - group.caldaia
+  - group.set_caldaia

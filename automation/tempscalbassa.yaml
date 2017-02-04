@@ -1,0 +1,18 @@
+alias: temperatura acuario scalari bassa
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.tempacquario207
+    above: 24
+#    below: 27
+condition:
+  - condition: numeric_state
+#    entity_id: sensor.temperatura_acquario_tempacq
+    entity_id: sensor.tempacquario207
+    above: 24
+#    below: 27
+action:
+  - service: notify.pushetta
+    data_template:
+      message: 'temperatura acuario scalari bassa {{now().strftime("%d-%m-%Y %H:%M:%S")}}'
+  - service: homeassistant.turn_on
+    entity_id: script.caldaia_on

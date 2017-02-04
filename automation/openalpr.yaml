@@ -1,0 +1,16 @@
+alias: openalpr
+trigger:
+  platform: event
+  event_type: found_plate
+  event_data:
+    entity_id: image_processing.openalpr_my_android_camera
+    plate: EY596TL
+action:
+  - service: switch.turn_on
+    entity_id: switch.allarme
+  - service: notify.puschetta
+#  data: {"message":'Attenzione presenza GAS piano terra 1 '}
+#    data:
+    data_template:
+      message: 'Attenzione EY596TL RILEVATA {{now().strftime("%d-%m-%Y %H:%M:%S")}}'
+#    message: 'Attenzione presenza PIR piano terra 1'

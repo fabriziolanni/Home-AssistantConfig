@@ -1,0 +1,16 @@
+alias: lolin luce accesa
+trigger:
+#  platform: time
+#  hours: '*'
+#  minutes: '*'
+#  seconds: '/5'
+# condition:
+  - platform: numeric_state
+    entity_id: sensor.pir203
+    above: 1
+action:
+  - service: homeassistant.turn_on
+    entity_id: script.timed_lamp
+#  - service: notify.pushetta
+#    data_template: 
+#      message: 'Luce 1 accesa {{now().strftime("%d-%m-%Y %H:%M:%S")}}'

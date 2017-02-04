@@ -1,0 +1,19 @@
+alias: msg buongiorno
+trigger:
+  - platform: time
+    hours: '14'
+    minutes: '09'
+    seconds: '00'
+    # You can also match on interval. This will match every 5 minutes
+#  minutes: 0
+#  hours: '*'
+#  minutes: '*'
+#  seconds: '/5'
+action:
+  - service: notify.pushetta
+    data_template:
+#  data:
+#      title: "Sveglia!"
+      message: 'Buongiorno, è ora di alzarsi2 {{now().strftime("%d-%m-%Y %H:%M:%S")}}'
+#    message: 'Buongiorno, è ora di alzarsi2'      
+# {"message":"test" }

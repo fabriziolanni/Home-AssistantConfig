@@ -1,0 +1,23 @@
+alias: lolin luce accesa
+trigger:
+#  platform: time
+#  hours: '*'
+#  minutes: '*'
+#  seconds: '/5'
+# condition:
+  platform: numeric_state
+  entity_id: sensor.pir203
+  above: 1
+#  from: '0'
+#  to: '1'
+action:
+  - service: switch.turn_on
+    entity_id: switch.lolin1
+  - service: notify.pushetta
+#    data:
+#      message: Luce 1 accesa
+    data_template: 
+    #{"message":'Luce 1 accesa{{now.now().strftime("%d-%m-%Y %H:%M:%S")}}'}
+#    message: 'Luce 1 accesa {{now.now().strftime("%d-%m-%Y %H:%M:%S")}}'
+      message: 'Luce 1 accesa {{now().strftime("%d-%m-%Y %H:%M:%S")}}'
+      

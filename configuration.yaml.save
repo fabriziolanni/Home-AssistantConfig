@@ -1,0 +1,176 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 41.4985804
+  longitude: 13.7037659
+  # C for Celcius, F for Fahrenheit
+  temperature_unit: C
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Rome
+
+# Allows you to issue voice commands from the frontend
+conversation:
+
+# Enables the frontend
+frontend:
+
+# Discover some devices automatically
+discovery:
+
+mqtt:
+  broker: m20.cloudmqtt.com
+  port: 22065
+  client_id: homeassistant
+  keepalive: 60
+  # username: homeassistant
+  # password: df6870
+  username: czezrvfj
+  password: 7mqoV0S8ZcP4
+
+device_tracker 2:
+  # platform: nmap_tracker
+  # hosts: 192.168.123.1/24
+  # home_interval: 50
+  platform: owntracks
+
+device_tracker:
+  platform: mqtt
+  qos: 1
+  devices:
+    # fabrizio4: /location/fabrizio4
+    fabrizio4_note4: /owntracks/fabrizio4/note4
+    homeassistant: /location/homeassistant
+    # samuele: /location/samuele
+    samuele_s5: /owntracks/samuele/s5
+    federico_s6: /location/federico
+    danila_s6: /location/danila
+
+group:
+  Family:
+    - device_tracker.fabrizio4_note4
+    - device_tracker.danila_s6
+    - device_tracker.federico_s6
+    - device_tracker.samuele_s5
+
+# Track the sun
+sun:
+
+# Checks for available updates
+updater:
+
+# Show links to resources in log and frontend
+# introduction:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+http:
+  api_password: df6870
+
+camera:
+  platform: generic
+  still_image_url: http://192.168.123.10/videostream.cgi?user=admin&pwd=df6870
+  name: Camera1
+  port: 80
+  username: admin
+  password: df6870
+
+camera 2:
+  platform: foscam
+  ip: 192.168.123.11
+  name: Camera2
+  port: 80
+  username: admin
+  password: df6870
+
+camera 3:
+  platform: foscam
+  ip: 192.168.123.12
+  name: Camera3
+  port: 80
+  username: admin
+  password: df6870
+
+camera 4:
+  platform: foscam
+  ip: 192.168.123.13
+  name: Camera4
+  port: 80
+  username: admin
+  password: df6870
+
+sensor 2:
+  platform: cpuspeed
+  name: CPU 
+
+sensor 3:
+  platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /home
+    - type: memory_free
+    - type: processor_use
+
+zone:
+  name: home
+  latitude: 41.4985804
+  longitude: 13.7037659
+  # Optional radius in meters (default: 100)
+  radius: 250
+  # Optional icon to show instead of name
+  icon: mdi:home
+
+zone 2:
+  name: lavoro_arce
+  latitude: 41.5828072
+  longitude: 13.5792682
+  radius: 400
+  # icon: mdi:work
+
+zone 3:
+  name: liceo_samu
+  latitude: 41.486325
+  longitude: 13.8360754
+  radius: 400
+
+zone 4:
+  name: lavoro_danila
+  latitude: 41.4884586
+  longitude: 13.8325239
+  radius: 400
+
+zone 5:
+  name: scuola_fede
+  latitude: 41.4861257
+  longitude: 13.8360429
+  radius: 400
+
+downloader:
+  download_dir: downloads
+
+sensor:
+  platform: forecast
+  api_key: 6f6fef5d90b46c8e03d949f069931959
+  monitored_conditions:
+#    - summary
+#    - icon
+#    - nearest_storm_distance
+#    - nearest_storm_bearing
+#    - precip_type
+    - precip_intensity
+    - precip_probability
+    - temperature
+#    - apparent_temperature
+#    - dew_point
+#    - wind_speed
+#    - wind_bearing
+#    - cloud_cover
+    - humidity
+#    - pressure
+#    - visibility
+#    - ozone
+

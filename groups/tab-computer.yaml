@@ -1,0 +1,16 @@
+Server:
+  - sensor.web_scrape
+  - sensor.disk_use_
+  - sensor.disk_use__2
+  - sensor.disk_use_home
+  - sensor.disk_use_home_2
+  - sensor.cpu
+  - sensor.cpu_use
+  - sensor.ram_free
+  - sensor.ram_use
+  - sensor.ram_use_2
+  - sensor.disk_free
+Speedtest:
+  - sensor.speedtest_download
+  - sensor.speedtest_ping
+  - sensor.speedtest_upload

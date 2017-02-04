@@ -1,0 +1,7 @@
+- platform: pushetta
+  name: pushetta
+  api_key: !secret pushetta_key
+  channel_name: homelanni
+- platform: lannouncer
+  name: n910f_fab
+  host: 192.168.123.151

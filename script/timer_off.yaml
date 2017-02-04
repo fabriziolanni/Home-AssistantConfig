@@ -1,0 +1,12 @@
+#timer_off:
+alias: "Turn off lamp after 10 minutes"
+sequence:
+#  - delay:
+#    seconds: 15
+#    minutes: 
+  - service: switch.turn_off
+    data:
+      entity_id: switch.lolin1
+  - service: notify.pushetta
+    data_template: 
+      message: 'Luce 1 spenta {{now().strftime("%d-%m-%Y %H:%M:%S")}}'

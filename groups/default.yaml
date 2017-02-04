@@ -1,0 +1,20 @@
+#_Fabrizio lanni casa:
+#  - group.famiglia
+#  - group.tempo
+#  - group.server
+#  - group.condizioni_interne
+Famiglia:
+  - device_tracker.594665f5
+#  - device_tracker.fabrizio_s5
+  - sensor.batteria_note4_fabrizio
+  - device_tracker.danila_s6
+  - sensor.batteria_s5_danila
+  - device_tracker.federico_s6
+  - sensor.batteria_s6_federico
+  - device_tracker.samuele_s5
+  - sensor.batteria_s5_samuele
+Distanza da casa:
+  - sensor.fabrizio_to_casa
+  - sensor.danila_to_casa
+  - sensor.samuele_to_casa
+  - sensor.federico_to_casa

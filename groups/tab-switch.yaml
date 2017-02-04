@@ -1,0 +1,10 @@
+Cancelli:
+  - switch.cancelletto
+  - switch.cancello
+WakeOnLan:
+  - switch.elastix
+Irrigazione Giardino:
+  - script.irrigazione
+  - switch.pompa11
+  - switch.pompa12
+  - switch.pompa13

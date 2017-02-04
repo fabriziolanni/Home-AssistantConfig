@@ -1,0 +1,52 @@
+# alias: Alarm room1
+sequence:
+#      - alias: Switch On Relay - Solenoid Valve Open
+#        trigger:
+#      - platform: numeric_state
+#        entity_id: sensor.arduino_a0
+#        below: 300
+#  - alias: Messagggio Irrigazione terminata
+- service: notify.pushetta
+  data:
+    message: "Irrigazione iniziata"
+# pompa1      
+#  - alias: Relay On
+- service: homeassistant.turn_on
+  data:
+    entity_id: switch.pompa11
+- delay:
+# supports seconds, milliseconds, minutes, hours, etc.
+    minutes: 5
+#  - alias: Relay Off
+- service: homeassistant.turn_off
+  data:
+    entity_id: switch.pompa11
+# pompa2
+#  - alias: Relay On
+- service: homeassistant.turn_on
+  data:
+    entity_id: switch.pompa12
+- delay:
+# supports seconds, milliseconds, minutes, hours, etc.
+    minutes: 5
+#  - alias: Relay Off
+- service: homeassistant.turn_off
+  data:
+    entity_id: switch.pompa12
+# pompa3      
+#  - alias: Relay On
+- service: homeassistant.turn_on
+  data:
+    entity_id: switch.pompa13
+- delay:
+# supports seconds, milliseconds, minutes, hours, etc.
+    minutes: 5
+#  - alias: Relay Off
+- service: homeassistant.turn_off
+  data:
+    entity_id: switch.pompa13
+# fine irrigazione
+#  - alias: Messagggio Irrigazione terminata
+- service: notify.pushetta
+  data:
+    message: "Irrigazione terminata"

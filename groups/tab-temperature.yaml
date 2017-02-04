@@ -1,0 +1,41 @@
+Condizioni Esterne:
+  - sun.sun
+  - sensor.time
+  - sensor.date
+  - sensor.dark_sky_summary
+  - sensor.dark_sky_icon
+  - sensor.dark_sky_temperature
+  - sensor.dark_sky_apparent_temperature
+  - sensor.dark_sky_humidity
+  - sensor.dark_sky_precip
+  - sensor.dark_sky_precip_intensity
+  - sensor.dark_sky_precip_probability
+  - sensor.dark_sky_daily_low_temperature
+  - sensor.dark_sky_daily_high_temperature
+Condizioni_Interne:
+  - sensor.INTERNA_temperature
+#      entity_picture: https://dl.dropboxusercontent.com/u/81386/HA-Stuff/temperature.png
+#      friendly_name: 'Temperatura Interna'
+  - sensor.INTERNA_humidity
+#      entity_picture: https://dl.dropboxusercontent.com/u/81386/HA-Stuff/humidity.png
+#      friendly_name: 'Umidità Interna'
+Condizioni_Interne_1P:
+  - sensor.temperatura_1p
+  - sensor.umidita_1p
+  - sensor.gas_pt
+Condizioni_Interne_1Pw:
+  - sensor.PIANO1_temperature
+  - sensor.PIANO1_humidity
+Condizioni_ingresso:
+  - sensor.temperature207
+  - sensor.humidity207
+Condizioni_scala1p:
+  - sensor.temperature203
+  - sensor.humidity203
+Condizioni_Interne_cucina:
+  - sensor.temperature204
+  - sensor.humidity204
+  - sensor.gas204
+Acquario:
+  - sensor.tempacquario207
+  - sensor.tempacquario206

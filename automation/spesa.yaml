@@ -1,0 +1,13 @@
+alias: Lista spesa
+trigger:
+  - platform: time
+    minutes: "/5"
+    seconds: 0
+condition:
+  - condition: state
+    entity_id: input_boolean.acquista
+    state: "on"
+action:
+  - service: notify.pushetta
+    data:
+      message: "Lista spesa : {% if is_state('input_boolean.pane', 'on') %} - Pane  {% endif %}{% if is_state('input_boolean.latte', 'on') %} - latte  {% endif %}{% if is_state('input_boolean.coca', 'on') %} - Coca Cola{% endif %}{% if is_state('input_boolean.aranciata', 'on') %} - Aranciata  {% endif %}{% if is_state('input_boolean.cotolette', 'on') %} - Cotolette  {% endif %}{% if is_state('input_boolean.patatine', 'on') %} - Patatine  {% endif %}{% if is_state('input_boolean.nutella', 'on') %} - Nutella  {% endif %}{% if is_state('input_boolean.shampo', 'on') %} - Shampoo  {% endif %}{% if is_state('input_boolean.formaggio', 'on') %} - Formaggio  {% endif %}{% if is_state('input_boolean.caffe', 'on') %} - Caffe  {% endif %}{% if is_state('input_boolean.gelato', 'on') %} - Gelato  {% endif %}{% if is_state('input_boolean.cartaigienica', 'on') %} - Carta Igienica  {% endif %}!"

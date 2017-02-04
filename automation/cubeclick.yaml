@@ -1,0 +1,10 @@
+alias: cubeclick yeelightsamufede
+trigger:
+  platform: event
+  event_type: click
+  event_data:
+      entity_id: binary_sensor.cube_158d000114845d
+      click_type: single
+action:
+  service: light.toggle
+  entity_id: light.yeelightsamufede, light.gateway_light_f0b429cc61f4

@@ -1,0 +1,110 @@
+- !include automation/allarme.yaml
+- !include automation/sveglia.yaml
+#- !include automation/allarmed.yaml
+- !include automation/pir.yaml
+- !include automation/gaspt.yaml
+- !include automation/gascucina.yaml
+#- !include automation/spesa.yaml
+- !include automation/update.yaml
+- !include automation/lucion.yaml
+- !include automation/lucioff.yaml
+- !include automation/caldaia.yaml
+#- !include automation/rainday.yaml
+#- !include automation/rainover.yaml
+- !include automation/irrigazione.yaml 
+- !include automation/messaggi.yaml
+- !include automation/tempscalalta.yaml
+- !include automation/tempscalbassa.yaml
+#- !include automation/luci.yaml
+#- !include automation/climatemattina.yaml
+#- !include automation/climatepomeriggio.yaml
+#- !include automation/climategiorno.yaml
+#- !include automation/climatenotte.yaml
+#- !include automation/dimyee.yaml
+- !include automation/openalpr.yaml
+- !include automation/cubeclick.yaml
+- !include automation/cubedoubleclick.yaml
+#- !include automation/cubelonpress.yaml
+- !include automation/restarthass.yaml
+
+- alias: 'Set heat 6.3 at 8'
+  trigger:
+    platform: time
+    minutes: '/5'
+#    seconds: '00'
+  condition:
+    condition: time
+    after: "06:30:00"
+    before: '08:00:00'
+#    after: '{{ states.input_select.start_mattina.state }}'
+#    before: '{{ states.input_select.stop_mattina.state }}'
+  action:
+    - service: climate.set_temperature
+      data_template:
+        entity_id: climate.termostato_caldaia
+#        temperature: 22 
+        temperature: '{{ states.input_slider.temp_mattina.state }}'
+        operation_mode: Heat
+
+- alias: 'Set heat 8 alle 17.3'
+  trigger:
+    platform: time
+    minutes: '/5'
+#    seconds: '00'
+  condition:
+    condition: time
+    after: "08:00:00"
+    before: "17:30:00"
+#    after: '{{ states.input_select.stop_mattina.state }}'
+#    before: '{{ states.input_select.start_pomeriggio.state }}'
+  action:
+    - service: climate.set_temperature
+      data_template:
+        entity_id: climate.termostato_caldaia
+#        temperature: 16 
+        temperature: '{{ states.input_slider.temp_giorno.state }}'
+        operation_mode: Heat
+
+- alias: 'Set heat 17.3 alle 21'
+  trigger:
+    platform: time
+    minutes: '/5'
+#    seconds: '00'
+  condition:
+    condition: time
+    after: "17:30:00"
+    before: "21:00:00"
+#    after: '{{ states.input_select.start_pomeriggio.state }}'
+#    before: '{{ states.input_select.stop_pomeriggio.state }}'
+  action:
+    - service: climate.set_temperature
+      data_template:
+        entity_id: climate.termostato_caldaia
+#        temperature: 22
+        temperature: '{{ states.input_slider.temp_pomeriggio.state }}'
+        operation_mode: Heat
+
+- alias: 'Set heat 16c at 22:30'
+  trigger:
+    platform: time
+    minutes: '/5'
+    seconds: '00'
+  condition:
+#  condition: template
+#    value_template: '{{ states.input_select.stop_pomeriggio.state <= now().hour < states.input_select.start_mattina.state }}'
+    condition: time
+    after: "21:00:00"
+    before: "06:30:00"
+#    after: '{{ input_select.stop_pomeriggio }}'
+#    after: '{{ states.input_select.stop_pomeriggio.state }}'
+#    before: '{{ states.input_select.start_mattina.state }}'
+#    condition: template
+#          # this will report true if time in input_select (in format HH:MM ) is equal to actual time
+#    value_template: '{{ states.input_select.stop_pomeriggio.time > now.time() < states.input_select.start_mattina.time }}'
+  action:
+    - service: climate.set_temperature
+      data_template: 
+        entity_id: climate.termostato_caldaia
+#        temperature: 16
+        temperature: '{{ states.input_slider.temp_notte.state }}'
+        operation_mode: Heat

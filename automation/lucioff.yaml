@@ -1,0 +1,14 @@
+alias: lolin luce spenta
+trigger:
+  platform: numeric_state
+  entity_id: sensor.pir203
+  below: 0
+#  from: '1'
+#  to: '0'
+action:
+#  - delay: '00:00:15'
+  - service: switch.turn_off
+    entity_id: switch.lolin1
+  - service: notify.pushetta
+    data_template:
+      message: 'Luce 1 spenta {{now().strftime("%d-%m-%Y %H:%M:%S")}}'

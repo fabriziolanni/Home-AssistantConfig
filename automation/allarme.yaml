@@ -1,0 +1,17 @@
+alias: Disattiva allarme note4 casa
+#trigger:
+trigger:
+  - platform: state
+    entity_id: device_tracker.fabrizio_note4 
+    from: not_home
+    to: home
+action:
+#- service: homeassistant.turn_on
+#  entity_id: script.allarmeoff
+  service: notify.pushetta
+  data_template: 
+#    data: 
+    message: 'Bentornato. Allarme disattivato {{now().strftime("%d-%m-%Y %H:%M:%S")}}'
+#      message: Bentornato. Allarme disattivato  
+#- service: switch.turn_off
+#  entity_id: switch.allarme

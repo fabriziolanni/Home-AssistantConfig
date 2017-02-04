@@ -1,0 +1,14 @@
+alias: notte
+#  initial_state: True
+hide_entity: False
+trigger:
+  - platform: time
+    after: '{{ states.input_select.stop_pomeriggio.state }}'
+#    after: '22:00:00'
+action:
+  - service: climate.set_temperature
+    data:
+    entity_id: climate.termostato_caldaia
+    temperature: '{{ states.input_slider.temp_notte.state }}'
+#        temperature: '16'
+    operation_mode: Heat

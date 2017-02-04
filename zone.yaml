@@ -1,0 +1,45 @@
+##############################################
+#                    ZONE                    #
+##############################################
+- name: home
+#home:
+  latitude: 41.4985804
+  longitude: 13.7037659
+  # Optional radius in meters (default: 100)
+  radius: 250
+  # Optional icon to show instead of name
+#  icon: mdi:school
+  icon: mdi:home
+
+- name: lavoro_arce
+  latitude: 41.5828072
+  longitude: 13.5792682
+  radius: 400
+  icon: mdi:work
+
+- name: liceo_samu
+  latitude: 41.4863250
+  longitude: 13.8360754
+  radius: 400
+  icon: mdi:school
+
+- name: lavoro_danila
+#  lavoro_danila:
+  latitude: 41.4884586
+  longitude: 13.8325239
+  radius: 400
+  icon: mdi:work
+
+- name: scuola_fede
+#scuola_fede:
+  latitude: 41.4861257
+  longitude: 13.8360429
+  radius: 400
+  icon: mdi:school
+
+- name: casa_cassino
+#casa_cassino:
+  latitude: 41.5162065
+  longitude: 13.8670191
+  radius: 400
+  icon: mdi:home

@@ -1,0 +1,40 @@
+sensor 9:                                                                                                                                                                                                          
+  platform: forecast                                                                                                                                                                                               
+  api_key: ************                                                                                                                                                                                            
+  monitored_conditions:                                                                                                                                                                                            
+  - summary                                                                                                                                                                                                        
+  - precip_type                                                                                                                                                                                                    
+  - precip_intensity                                                                                                                                                                                               
+  - precip_probability                                                                                                                                                                                             
+  - temperature                                                                                                                                                                                                    
+  - humidity                                                                                                                                                                                                       
+  - pressure                                                                                                                                                                                                       
+  - hourly_summary                                                                                                                                                                                                 
+switch:                                                                                                                                                                                                            
+  platform: mqtt                                                                                                                                                                                                   
+  name: "Garden Water pump"                                                                                                                                                                                        
+  state_topic: "/feeds/jardin/gpio/13"                                                                                                                                                                             
+  command_topic: "/feeds/jardin/gpio/13/set"                                                                                                                                                                       
+  payload_on: "1"                                                                                                                                                                                                  
+  payload_off: "0"                                                                                                                                                                                                 
+
+automation:                                                                                                                                                                                                        
+  trigger:                                                                                                                                                                                                         
+    platform: sun                                                                                                                                                                                                  
+    event: sunset                                                                                                                                                                                                  
+    offset: "-00:00:30"                                                                                                                                                                                            
+  condition:                                                                                                                                                                                                       
+#This is not raining                                                                                                                                                                                               
+    - platform: numeric_state                                                                                                                                                                                      
+      entity_id: sensor.weather_precip_intensity                                                                                                                                                                   
+      # below: <=                                                                                                                                                                                                  
+      below: 0                                                                                                                                                                                                     
+#And there is few chance that it's gonna rain                                                                                                                                                                      
+    - platform: numeric_state                                                                                                                                                                                      
+      entity_id: sensor.weather_precip_probability                                                                                                                                                                 
+      below: 50                                                                                                                                                                                                    
+#    platform: template                                                                                                                                                                                            
+#    value_template: '{{ sensor.weather_precip_intensity < 1 && sensor.weather_precip_probability < 70 }}'                                                                                                         
+  action:                                                                                                                                                                                                          
+   service: homeassistant.turn_on                                                                                                                                                                                  
+   entity_id: switch.garden_water_pump   

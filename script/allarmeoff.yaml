@@ -1,0 +1,7 @@
+sequence:
+- service: notify.mypushetta
+  data: 
+#      message: 'Bentornato. Allarme disattivato {{now().strftime("%d-%m-%Y %H:%M:%S")}}'
+    message: Bentornato. Allarme disattivato  
+- service: switch.turn_off
+  entity_id: switch.allarme

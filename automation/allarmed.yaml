@@ -1,0 +1,13 @@
+alias: Attiva allarme quando note 4 casa
+trigger:
+  platform: state
+  entity_id: device_tracker.fabrizio_note4
+  from: 'home'
+  to: 'not_home'
+action:
+  - service: switch.turn_on
+    entity_id: switch.allarme
+  - service: notify.pushetta
+    data_template:
+      message: 'Ciao. Allarme inserito {{now().strftime("%d-%m-%Y %H:%M:%S")}}'
+#    message: 'Ciao. Allarme inserito'

@@ -1,0 +1,5 @@
+sequence:
+- execute_service: homeassistant.turn_on
+  service_data:
+    entity_id:
+      - switch.caldaia_manuale

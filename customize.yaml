@@ -1,0 +1,104 @@
+#    device_tracker.fabrizio_note4:
+#      entity_picture: https://cf.dropboxstatic.com/static/images/icons/ajax-lo$
+    device_tracker.fabrizio4_note4:
+      hidden: true
+#      entity_picture: https://192.168.123.200/images2/fabrizio.jpg
+      entity_picture: /var/www/html/images2/fabrizio.jpg
+    device_tracker.594665f5:
+      entity_picture: https://192.168.123.200/images2/fabrizio.jpg
+    device_tracker.fabrizio_s5:
+      entity_picture: https://192.168.123.200/images2/fabrizio.jpg
+    device_tracker.danila_s6:
+      entity_picture: https://192.168.123.200/images2/danila.jpg
+    device_tracker.federico_s6:
+      entity_picture: https://192.168.123.200/images2/federico.jpg
+    device_tracker.samuele_s5:
+      entity_picture: https://192.168.123.200/images2/samuele.jpg
+    sensor.batteria_s5_fabrizio:
+      icon: mdi:cellphone-iphone
+    sensor.batteria_s5_danila:
+      icon: mdi:cellphone-iphone
+    sensor.batteria_s5_samuele:
+      icon: mdi:cellphone-iphone
+    sensor.batteria_s6_federico:
+      icon: mdi:cellphone-iphone
+    switch.caldaia_manuale:
+#      entity_picture: https://192.168.123.200/lanni/images/caldaia.jpg
+      icon: mdi:led-on
+#    switch.cancello:
+#      entity_picture: https://192.168.123.200/lanni/images/cancello.jpg
+#    switch.cancelletto:
+#      entity_picture: https://192.168.123.200/lanni/images/cancelletto.jpg
+#    sensor.INTERNA_humidity
+#      entity_picture: https://192.168.123.200/lanni/images/umidita.jpg
+    device_tracker.fabrizio4_fabrizio:
+      hidden: true
+    sensor.weather_temperature:
+      friendly_name: 'temperatura esterna'
+      icon: mdi:temperature-celsius
+    sensor.weather_summary:
+      icon: mdi:weather-sunny
+    sensor.weather_precip_probability:
+      icon: mdi:weather-pouring
+    sensor.weather_precip_intensity:
+      friendly_name: 'Pioggia'
+      icon: mdi:weather-pouring
+    sensor.weather_humidity:
+      friendly_name: 'umidità esterna'
+      icon: mdi:water-percent
+    sensor.weather_wind_speed:
+      icon: mdi:weather-windy     
+    group.shopping:
+      hidden: true
+    group.dispositivi_rete:
+      hidden: true
+    sensor.interna_humidity:
+      icon: mdi:water-percent
+    sensor.piano1_humidity:
+      icon: mdi:water-percent
+    sensor.humidity204:
+      icon: mdi:water-percent
+    sensor.humidity203:
+      icon: mdi:water-percent
+    sensor.humidity207:
+      icon: mdi:water-percent
+    sensor.ingressino_humidity:
+      icon: mdi:water-percent
+    sensor.umidita_1p:
+      icon: mdi:water-percent
+    sensor.temperatura_1p: 
+      icon: mdi:temperature-celsius
+    sensor.interna_temperature:
+      icon: mdi:temperature-celsius
+    sensor.piano1_temperature:
+      icon: mdi:temperature-celsius
+    sensor.temperature204:
+      icon: mdi:temperature-celsius
+    sensor.temperature203:
+      icon: mdi:temperature-celsius
+    sensor.temperature207:
+      icon: mdi:temperature-celsius
+    sensor.ingressino_temperature:
+      icon: mdi:temperature-celsius
+    sensor.gas204:
+      icon: mdi:gas-station
+    sensor.gas_pt:
+      icon: mdi:gas-station
+    sensor.pir_pt:
+      icon: mdi:nfc
+    sensor.pir203:
+      icon: mdi:nfc
+    sensor.pir206:
+      icon: mdi:nfc
+    sensor.pir207:
+      icon: mdi:nfc
+    sensor.ingressino_pirmotion:
+      icon: mdi:nfc
+    sensor.interna_pirmotion:
+      icon: mdi:nfc
+    sensor.temperatura_acquario_tempacq:
+      icon: mdi:temperature-celsius
+    sensor.pir_1:
+      icon: mdi:nfc    
+    
+

@@ -1,0 +1,12 @@
+#timed_lamp:
+alias: "Turn on lamp and set timer"
+sequence:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.lolin1
+  - service: notify.pushetta
+    data_template: 
+      message: 'Luce 1 accesa {{now().strftime("%d-%m-%Y %H:%M:%S")}}'
+  - service: script.turn_on
+      data:
+      entity_id: script.timer_off

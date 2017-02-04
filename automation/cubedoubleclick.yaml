@@ -1,0 +1,16 @@
+alias: cube double click
+trigger:
+  platform: event
+  event_type: click
+  event_data:
+      entity_id: binary_sensor.cube_158d000114845d
+      click_type: double
+#action:
+#  service: light.toggle
+#  entity_id: switch.lolin1
+#action:
+#  service: scene.turn_on
+#  entity_id: scene.chambre_doux
+action:
+  - service: homeassistant.turn_on
+    entity_id: script.timed_lamp

@@ -1,0 +1,30 @@
+#alias: Rainy Day
+- trigger:
+    - platform: state
+      entity_id: group.family
+      state: 'home'
+    - platform: state
+      entity_id: sun.sun
+      from: 'below_horizon'
+      state: 'above_horizon'
+    - platform: numeric_state
+         # One of the next values has to be defined
+      entity_id: sensor.dark_sky_precip_intensity
+      above: 3
+- condition:
+    condition: and
+      conditions:
+      - condition: state
+        entity_id: group.family
+        state: 'home'
+      - condition: state
+        entity_id: sun.sun
+        state: 'above_horizon'
+      - condition: numeric_state
+         # One of the next values has to be defined
+        entity_id: sensor.dark_sky_precip_intensity
+        above: 3
+- action:
+    - service: scene.turn_on
+      entity_id: scene.rainy_day_lights
+

@@ -1,0 +1,13 @@
+alias: Msg gas piano terra 1
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.gas_pt
+    above: 100
+action:
+  - service: switch.turn_on
+    entity_id: switch.allarme
+  - service: notify.pushetta
+#    data:
+    data_template: 
+      message: 'Attenzione presenza GAS piano terra 1 {{now().strftime("%d-%m-%Y %H:%M:%S")}}'
+#      message: 'Attenzione presenza GAS piano terra 1 {{now.now().strftime("%d-%m-%Y %H:%M:%S")}}'
